@@ -1,0 +1,26 @@
+### Maven ###
+target/
+
+### IntelliJ ###
+.idea/
+*.iml
+
+### VS Code ###
+.vscode/
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Logs ###
+*.log
+logs/
+
+### Environment ###
+src/main/resources/application.properties
+
+### Uploads ###
+uploads/
+
+### Build ###
+out/

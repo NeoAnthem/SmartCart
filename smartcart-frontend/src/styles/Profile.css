@@ -1,0 +1,219 @@
+.profile-page{
+
+    width:100%;
+
+    max-width:1400px;
+
+    padding:40px;
+
+    margin:0 auto;
+
+    box-sizing:border-box;
+}
+
+.profile-layout{
+
+    display:grid;
+
+    grid-template-columns:1.3fr .7fr;
+
+    gap:25px;
+
+    margin-top:30px;
+
+    align-items:stretch;
+}
+
+@media (max-width:992px){
+
+    .profile-layout{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .profile-page{
+
+        padding:20px;
+    }
+
+}
+
+.profile-actions{
+
+    margin-top:55px;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+}
+
+.profile-actions .glow-button{
+
+    min-width:150px;
+}
+
+@media (max-width:768px){
+
+    .profile-actions{
+
+        justify-content:center;
+    }
+
+    .profile-actions .glow-button{
+
+        min-width:170px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .profile-actions{
+
+        gap:10px;
+    }
+
+    .profile-actions .glow-button{
+
+        width:100%;
+
+        max-width:260px;
+    }
+
+    .profile-layout{
+
+        justify-items:stretch;
+    }
+
+    .profile-card{
+
+        width:100%;
+    }
+
+}
+
+
+.profile-card{
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+    box-sizing:border-box;
+}
+
+@media (max-width:480px){
+
+    .profile-card{
+
+        padding:20px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .profile-page{
+
+        padding:16px;
+    }
+
+    .profile-layout{
+
+        grid-template-columns:1fr;
+    }
+
+    .profile-card{
+
+        width:100%;
+
+        padding:20px;
+
+        box-sizing:border-box;
+    }
+}
+
+
+.profile-stats-grid{
+
+    display:grid;
+
+    gap:15px;
+
+    margin-top:25px;
+
+    width:100%;
+}
+
+.profile-info-cards{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.profile-info-cards > .glass-card{
+
+    flex:1;
+}
+
+@media (max-width:375px){
+
+    .profile-info-cards{
+
+        flex-direction:column;
+    }
+}
+
+.profile-modal{
+
+    width:100%;
+
+    max-width:450px;
+
+    padding:30px;
+
+    box-sizing:border-box;
+}
+
+.logout-modal{
+
+    max-width:400px;
+
+    text-align:center;
+}
+
+@media (max-width:425px){
+
+    .profile-modal{
+
+        max-width:calc(100vw - 32px);
+
+        padding:24px;
+    }
+
+    .logout-modal{
+
+        max-width:calc(100vw - 32px);
+    }
+}

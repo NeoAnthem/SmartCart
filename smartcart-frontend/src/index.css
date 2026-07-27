@@ -1,0 +1,154 @@
+:root {
+
+  --bg-primary: #0b0b14;
+  --bg-secondary: #131322;
+  --bg-card: #1a1a2e;
+
+  --pink: #ff4fd8;
+  --purple: #8b5cf6;
+  --cyan: #00e5ff;
+
+  --white: #ffffff;
+  --gray: #cbd5e1;
+  --gray-dark: #94a3b8;
+
+  --success: #22c55e;
+  --danger: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  background: var(--bg-primary);
+
+  color: var(--white);
+
+  font-family: "Segoe UI", sans-serif;
+
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  top: -200px;
+  left: -200px;
+
+  width: 700px;
+  height: 700px;
+
+  background: #ff4fd8;
+
+  border-radius: 50%;
+
+  filter: blur(220px);
+
+  opacity: 0.22;
+
+  z-index: -1;
+
+  animation: floatPink 12s infinite alternate;
+}
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  bottom: -250px;
+  right: -250px;
+
+  width: 800px;
+  height: 800px;
+
+  background: #8b5cf6;
+
+  border-radius: 50%;
+
+  filter: blur(260px);
+
+  opacity: 0.20;
+
+  z-index: -1;
+
+  animation: floatPurple 15s infinite alternate;
+}
+
+@keyframes floatPink {
+
+  from {
+    transform: translate(0,0);
+  }
+
+  to {
+    transform: translate(80px,50px);
+  }
+}
+
+@keyframes floatPurple {
+
+  from {
+    transform: translate(0,0);
+  }
+
+  to {
+    transform: translate(-100px,-50px);
+  }
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    #ff4fd8,
+    #8b5cf6
+  );
+
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    #ff4fd8,
+    #00e5ff
+  );
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+select option {
+    color: black;
+}

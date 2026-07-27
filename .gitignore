@@ -1,0 +1,42 @@
+# ==========================
+# IntelliJ / VS Code
+# ==========================
+.idea/
+.vscode/
+*.iml
+
+# ==========================
+# Operating System
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Logs
+# ==========================
+*.log
+logs/
+
+# ==========================
+# Backend (Spring Boot)
+# ==========================
+**/target/
+**/out/
+
+# Never commit local configuration
+**/src/main/resources/application.properties
+
+# ==========================
+# Frontend (React)
+# ==========================
+**/node_modules/
+**/dist/
+
+# Never commit frontend environment file
+**/.env
+
+
+# ==========================
+# Archives
+# ==========================
+*.zip
