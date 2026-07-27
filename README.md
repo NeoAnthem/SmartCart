@@ -182,10 +182,16 @@ SmartCart was built to demonstrate:
 - Checkout
 
 
+- Order Confirmation Email Notifications
+
+
 - Order History
 
 
 - Order Tracking
+
+
+- PDF Invoice Generation
 
 
 - Product Reviews
@@ -281,6 +287,9 @@ SmartCart was built to demonstrate:
 
 
 - Hibernate
+
+
+- Swagger / OpenAPI
 
 
 - Maven
