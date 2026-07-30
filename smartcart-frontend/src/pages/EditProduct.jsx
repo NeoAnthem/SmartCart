@@ -5,6 +5,7 @@ import {getProductById, updateProduct, uploadImage} from "../services/productSer
 import Navbar from "../components/Navbar";
 import { toast } from "react-toastify";
 import { HiOutlinePhotograph } from "react-icons/hi";
+import API_BASE_URL from "../services/api";
 
 function EditProduct() {
 
@@ -52,7 +53,7 @@ function EditProduct() {
         });
 
         setPreview(
-        `http://localhost:8080/images/${data.imageUrl}`
+        `${API_BASE_URL}/images/${data.imageUrl}`
         );
 
       } catch (error) {

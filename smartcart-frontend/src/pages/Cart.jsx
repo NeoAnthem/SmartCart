@@ -8,6 +8,7 @@ import {checkout} from "../services/orderService";
 import { processPayment } from "../services/paymentService";
 import Pagination from "../components/Pagination";
 import PageLoader from "../components/PageLoader";
+import API_BASE_URL from "../services/api";
 
 
 function Cart() {
@@ -428,7 +429,7 @@ const handleCheckout = async () => {
         >
 
           <img
-            src={`http://localhost:8080/images/${item.product.imageUrl}?t=${Date.now()}`}
+            src={`${API_BASE_URL}/images/${item.product.imageUrl}?t=${Date.now()}`}
             alt={item.product.name}
             onError={(e) => {
               e.target.src =

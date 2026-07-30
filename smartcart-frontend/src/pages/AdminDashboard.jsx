@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Users, Package, ShoppingCart, IndianRupee, TriangleAlert } from "lucide-react";
 import { toast } from "react-toastify";
 import PageLoader from "../components/PageLoader";
+import API_BASE_URL from "../services/api";
 
 function AdminDashboard() {
 
@@ -65,17 +66,17 @@ useEffect(() => {
 
     const response =
         await axios.get(
-        "http://localhost:8080/api/dashboard",
+        `${API_BASE_URL}/api/dashboard`,
         {
-          headers: {
+            headers: {
             Authorization: `Bearer ${token}`
-          }
+            }
         }
-      );
+        );
 
     setDashboard(response.data);
 
-  } catch (error) {
+    } catch (error) {
 
     toast.error(
     error.response?.data ||
@@ -92,7 +93,7 @@ useEffect(() => {
     try {
 
         const response = await axios.get(
-            "http://localhost:8080/api/products/low-stock",
+            `${API_BASE_URL}/api/products/low-stock`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`

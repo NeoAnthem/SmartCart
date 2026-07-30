@@ -6,6 +6,7 @@ import customSelectStyles from "../styles/selectStyles";
 import Pagination from "../components/Pagination";
 import { toast } from "react-toastify";
 import PageLoader from "../components/PageLoader";
+import API_BASE_URL from "../services/api";
 
 function AdminOrders() {
 
@@ -36,7 +37,7 @@ function AdminOrders() {
         setLoading(true);
 
         const response = await axios.get(
-            "http://localhost:8080/api/orders/admin",
+            `${API_BASE_URL}/api/orders/admin`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -82,7 +83,7 @@ function AdminOrders() {
   try {
 
     await axios.put(
-      `http://localhost:8080/api/orders/${orderId}/status`,
+      `${API_BASE_URL}/api/orders/${orderId}/status`,
       {
         status: status
       },

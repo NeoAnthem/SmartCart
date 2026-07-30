@@ -1,7 +1,7 @@
 import axios from "axios";
+import API_BASE_URL from "./api";
 
-const API_URL =
-  "http://localhost:8080/api/products";
+const API_URL = `${API_BASE_URL}/api/products`;
 
 export const createProduct =
 async (product) => {
@@ -84,7 +84,7 @@ export const searchProducts =
     const response =
       await axios.delete(
 
-        `http://localhost:8080/api/products/${id}`,
+        `${API_BASE_URL}/api/products/${id}`,
 
         {
           headers: {
@@ -108,7 +108,7 @@ export const getProductById =
     const response =
       await axios.get(
 
-        `http://localhost:8080/api/products/${id}`,
+        `${API_BASE_URL}/api/products/${id}`,
 
         {
           headers: {
@@ -133,7 +133,7 @@ export const getProductById =
     const response =
       await axios.put(
 
-        `http://localhost:8080/api/products/${id}`,
+        `${API_BASE_URL}/api/products/${id}`,
 
         product,
 
@@ -167,7 +167,7 @@ async (file) => {
   const response =
     await axios.post(
 
-      "http://localhost:8080/api/products/upload",
+      `${API_BASE_URL}/api/products/upload`,
 
       formData,
 
@@ -190,7 +190,7 @@ export const getLowStockProducts = async () => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-        "http://localhost:8080/api/products/low-stock",
+        `${API_BASE_URL}/api/products/low-stock`,
         {
             headers: {
                 Authorization: `Bearer ${token}`

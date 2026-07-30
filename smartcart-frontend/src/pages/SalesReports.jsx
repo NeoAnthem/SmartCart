@@ -9,6 +9,7 @@ import { HiOutlineBanknotes, HiOutlineCube, HiOutlineChartBar, HiOutlineTrophy, 
 import Pagination from "../components/Pagination";
 import { toast } from "react-toastify";
 import PageLoader from "../components/PageLoader";
+import API_BASE_URL from "../services/api";
 
 function SalesReports() {
 
@@ -36,7 +37,7 @@ function SalesReports() {
         try {
 
             const response = await axios.get(
-                "http://localhost:8080/api/reports/sales",
+                `${API_BASE_URL}/api/reports/sales`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -63,7 +64,7 @@ function SalesReports() {
 
         const response = await axios.get(
 
-            "http://localhost:8080/api/reports/monthly-revenue",
+            `${API_BASE_URL}/api/reports/monthly-revenue`,
 
             {
                 headers: {
@@ -115,7 +116,7 @@ function SalesReports() {
 
         const response = await axios.get(
 
-            "http://localhost:8080/api/reports/product-performance",
+            `${API_BASE_URL}/api/reports/product-performance`,
 
             {
                 headers: {

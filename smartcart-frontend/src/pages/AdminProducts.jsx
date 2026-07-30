@@ -10,6 +10,7 @@ import ConfirmDialog from "../components/ConfirmDialog";
 import Pagination from "../components/Pagination";
 import "../styles/AdminProducts.css";
 import PageLoader from "../components/PageLoader";
+import API_BASE_URL from "../services/api";
 
 function AdminProducts() {
 
@@ -328,7 +329,7 @@ const currentProducts =
             >
 
               <img
-                src={`http://localhost:8080/images/${product.imageUrl}?t=${Date.now()}`}
+                src={`${API_BASE_URL}/images/${product.imageUrl}`}
 
                 alt={product.name}
 

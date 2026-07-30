@@ -5,6 +5,7 @@ import { addToCart } from "../services/cartService";
 import Pagination from "../components/Pagination";
 import { toast } from "react-toastify";
 import PageLoader from "../components/PageLoader";
+import API_BASE_URL from "../services/api";
 
 function Wishlist() {
 
@@ -234,7 +235,7 @@ const currentWishlistItems =
                 >
 
                   <img
-                    src={`http://localhost:8080/images/${item.product.imageUrl}?t=${Date.now()}`}
+                    src={`${API_BASE_URL}/images/${item.product.imageUrl}?t=${Date.now()}`}
                     alt={
                       item.product.name
                     }

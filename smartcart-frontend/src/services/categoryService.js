@@ -1,7 +1,7 @@
-    import axios from "axios";
+import axios from "axios";
+import API_BASE_URL from "./api";
 
-    const API_URL =
-    "http://localhost:8080/api/categories";
+    const API_URL = `${API_BASE_URL}/api/products`;
 
     export const getCategories =
     async () => {

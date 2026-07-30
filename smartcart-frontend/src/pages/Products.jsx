@@ -11,7 +11,7 @@ import Select from "react-select";
 import customSelectStyles from "../styles/selectStyles";
 import Pagination from "../components/Pagination";
 import {HiXMark, HiOutlineChatBubbleLeftRight, HiOutlineStar, HiOutlineTruck, HiOutlineArrowPath, HiOutlineShieldCheck } from "react-icons/hi2";
-
+import API_BASE_URL from "../services/api";
 
 
 
@@ -383,7 +383,7 @@ const currentReviews = reviews.slice(
 
     const response =
       await axios.get(
-        "http://localhost:8080/api/products",
+        `${API_BASE_URL}/api/products`,
         {
           headers: {
             Authorization:
@@ -420,7 +420,7 @@ const currentReviews = reviews.slice(
       localStorage.getItem("token");
 
     await axios.post(
-      "http://localhost:8080/api/cart",
+      `${API_BASE_URL}/api/cart`,
       {
         productId: productId,
         quantity: 1
@@ -660,7 +660,7 @@ calculateRatingStats(
                         }}
                       >
                         <img
-                          src={`http://localhost:8080/images/${product.imageUrl}?t=${Date.now()}`}
+                          src={`${API_BASE_URL}/images/${product.imageUrl}?t=${Date.now()}`}
                           alt={product.name}
                           style={{
                             width: "100%",
@@ -814,7 +814,7 @@ calculateRatingStats(
   >
                   <img
                     className="product-image"
-                    src={`http://localhost:8080/images/${selectedProduct.imageUrl}`}
+                    src={`${API_BASE_URL}/images/${selectedProduct.imageUrl}`}
                     alt={selectedProduct.name}
                     style={{
                       transition: "transform .3s ease"

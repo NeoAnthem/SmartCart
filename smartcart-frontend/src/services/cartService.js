@@ -1,7 +1,7 @@
 import axios from "axios";
+import API_BASE_URL from "./api";
 
-const API_URL =
-  "http://localhost:8080/api/cart";
+const API_URL = `${API_BASE_URL}/api/products`;
 
 export const addToCart =
   async (productId) => {
@@ -79,7 +79,7 @@ export const removeCartItem =
 
     const response =
       await axios.put(
-        `http://localhost:8080/api/cart/${cartId}?quantity=${quantity}`,
+        `${API_BASE_URL}/api/cart/${cartId}?quantity=${quantity}`,
         {},
         {
           headers: {
@@ -102,7 +102,7 @@ export const removeCartItem =
 
     const response =
       await axios.get(
-        `http://localhost:8080/api/coupons/validate/${code}`,
+        `${API_BASE_URL}/api/coupons/validate/${code}`,
         {
           headers: {
             Authorization:
