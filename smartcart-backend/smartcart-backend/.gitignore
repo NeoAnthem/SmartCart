@@ -16,9 +16,6 @@ Thumbs.db
 *.log
 logs/
 
-### Environment ###
-src/main/resources/application.properties
-
 ### Uploads ###
 uploads/
 
