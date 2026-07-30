@@ -53,7 +53,7 @@ public class SecurityConfig {
             throws Exception {
 
         http
-                .cors(cors -> {})
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
 
                 .sessionManagement(session ->
@@ -75,6 +75,11 @@ public class SecurityConfig {
                                 "/api/reviews/**")
                         .permitAll()
 
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/products/**")
+                        .permitAll()
+
                         .anyRequest()
                         .authenticated())
 
@@ -92,7 +97,7 @@ public class SecurityConfig {
 
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://YOUR-FRONTEND.onrender.com"
+                "https://smart-cart-opal-sigma.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
