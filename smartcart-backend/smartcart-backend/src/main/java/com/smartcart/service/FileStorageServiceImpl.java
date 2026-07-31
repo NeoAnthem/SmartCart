@@ -1,57 +1,32 @@
 package com.smartcart.service;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-
 @Service
-public class FileStorageServiceImpl
-        implements FileStorageService {
+@RequiredArgsConstructor
+public class FileStorageServiceImpl implements FileStorageService {
 
-    private static final String
-            UPLOAD_DIR =
-            "D:/Software Development/Projects/Smartcart/uploads/images/";
+    private final Cloudinary cloudinary;
 
     @Override
-    public String uploadFile(
-            MultipartFile file) {
+    public String uploadFile(MultipartFile file) {
 
         try {
 
-            String fileName =
-                    file.getOriginalFilename();
+            var uploadResult = cloudinary.uploader().upload(
+                    file.getBytes(),
+                    ObjectUtils.emptyMap()
+            );
 
-            Path uploadPath =
-                    Paths.get(
-                            UPLOAD_DIR);
+            return uploadResult.get("secure_url").toString();
 
-            if (!Files.exists(
-                    uploadPath)) {
+        } catch (Exception e) {
 
-                Files.createDirectories(
-                        uploadPath);
-            }
-
-            Path filePath =
-                    uploadPath.resolve(
-                            fileName);
-
-            Files.copy(
-                    file.getInputStream(),
-                    filePath,
-                    StandardCopyOption.REPLACE_EXISTING);
-
-            return fileName;
-
-        } catch (IOException e) {
-
-            throw new RuntimeException(
-                    "Image Upload Failed");
+            throw new RuntimeException("Image Upload Failed", e);
         }
     }
 }

@@ -329,7 +329,11 @@ const currentProducts =
             >
 
               <img
-                src={`${API_BASE_URL}/images/${product.imageUrl}`}
+                src={
+                    product.imageUrl.startsWith("http")
+                        ? product.imageUrl
+                        : `${API_BASE_URL}/images/${product.imageUrl}`
+                }
 
                 alt={product.name}
 

@@ -1,7 +1,7 @@
 package com.smartcart.controller;
 
 import com.smartcart.service.FileStorageService;
-
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +19,10 @@ public class FileUploadController {
                 fileStorageService;
     }
 
-    @PostMapping("/upload")
+    @PostMapping(
+            value = "/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
     public String uploadImage(
 
             @RequestParam("file")

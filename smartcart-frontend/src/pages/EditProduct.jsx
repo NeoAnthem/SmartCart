@@ -53,7 +53,9 @@ function EditProduct() {
         });
 
         setPreview(
-        `${API_BASE_URL}/images/${data.imageUrl}`
+            data.imageUrl.startsWith("http")
+                ? data.imageUrl
+                : `${API_BASE_URL}/images/${data.imageUrl}`
         );
 
       } catch (error) {
@@ -78,15 +80,13 @@ async (e) => {
       URL.createObjectURL(file)
     );
 
-    const fileName =
-      await uploadImage(file);
+    const imageUrl =
+        await uploadImage(file);
 
-    setProduct({
-
-      ...product,
-
-      imageUrl: fileName
-    });
+    setProduct(prev => ({
+            ...prev,
+            imageUrl
+    }));
 
     toast.success(
       "Image Uploaded"
@@ -222,11 +222,8 @@ async (e) => {
         product.imageUrl && (
 
             <p
-                style={{
-                    color: "#8b5cf6",
-                    marginTop: "12px",
-                    textAlign: "center"
-                }}
+                className="image-url"
+                title={product.imageUrl}
             >
                 ✓ {product.imageUrl}
             </p>

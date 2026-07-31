@@ -660,7 +660,11 @@ calculateRatingStats(
                         }}
                       >
                         <img
-                          src={`${API_BASE_URL}/images/${product.imageUrl}?t=${Date.now()}`}
+                          src={
+                              product.imageUrl.startsWith("http")
+                                  ? product.imageUrl
+                                  : `${API_BASE_URL}/images/${product.imageUrl}?t=${Date.now()}`
+                          }
                           alt={product.name}
                           style={{
                             width: "100%",
@@ -814,7 +818,11 @@ calculateRatingStats(
   >
                   <img
                     className="product-image"
-                    src={`${API_BASE_URL}/images/${selectedProduct.imageUrl}`}
+                    src={
+                        selectedProduct.imageUrl?.startsWith("http")
+                            ? selectedProduct.imageUrl
+                            : `${API_BASE_URL}/images/${selectedProduct.imageUrl}?t=${Date.now()}`
+                    }
                     alt={selectedProduct.name}
                     style={{
                       transition: "transform .3s ease"
