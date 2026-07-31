@@ -1,7 +1,7 @@
 import axios from "axios";
 import API_BASE_URL from "./api";
 
-const API_URL = `${API_BASE_URL}/api/products`;
+const API_URL = `${API_BASE_URL}/api/payments`;
 
 export const processPayment =
   async (orderId) => {
@@ -24,7 +24,7 @@ export const processPayment =
               `Bearer ${token}`
           }
         }
-      );orderId
+      );
 
     return response.data;
 };

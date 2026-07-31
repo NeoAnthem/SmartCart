@@ -1,7 +1,7 @@
 import axios from "axios";
 import API_BASE_URL from "./api";
 
-const API_URL = `${API_BASE_URL}/api/products`;
+const API_URL = `${API_BASE_URL}/api/admin/users`;
 
 export const getAllUsers =
   async () => {

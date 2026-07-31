@@ -1,7 +1,7 @@
 import axios from "axios";
 import API_BASE_URL from "./api";
 
-const API_URL = `${API_BASE_URL}/api/products`;
+const API_URL = `${API_BASE_URL}/api/auth`;
 
 export const loginUser = async (email, password) => {
 
@@ -26,7 +26,7 @@ async (
   const response =
     await axios.post(
 
-      `${API_BASE_URL}/api/auth/register`,
+      `${API_URL}/api/auth/register`,
 
       {
         name,
