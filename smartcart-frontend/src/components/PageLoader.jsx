@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import LoadingSpinner from "./LoadingSpinner";
 
 function PageLoader({
@@ -7,7 +6,6 @@ function PageLoader({
 }) {
     return (
         <>
-            <Navbar />
 
             <div className="page-loader">
                 <div className="glass-card page-loader-card">

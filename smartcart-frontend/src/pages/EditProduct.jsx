@@ -28,14 +28,9 @@ function EditProduct() {
     
     const [preview,
         setPreview] =
-            useState(null);
-
-  useEffect(() => {
-
-    loadProduct();
-
-  }, []);
-
+    useState(null);
+  
+  
   const loadProduct =
     async () => {
 
@@ -58,13 +53,22 @@ function EditProduct() {
                 : `${API_BASE_URL}/images/${data.imageUrl}`
         );
 
-      } catch (error) {
+      } catch {
 
         toast.error(
           "Failed to load product"
         );
       }
     };
+
+useEffect(() => {
+
+    loadProduct();
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
+
+  
 
 const handleImageUpload =
 async (e) => {
@@ -125,7 +129,7 @@ async (e) => {
           "/admin/products"
         );
 
-      } catch (error) {
+      } catch {
 
         toast.error(
           "Update Failed"
