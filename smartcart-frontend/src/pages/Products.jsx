@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
 import { addToWishlist } from "../services/wishlistService";
 import axios from "axios";
@@ -12,6 +12,7 @@ import customSelectStyles from "../styles/selectStyles";
 import Pagination from "../components/Pagination";
 import {HiXMark, HiOutlineChatBubbleLeftRight, HiOutlineStar, HiOutlineTruck, HiOutlineArrowPath, HiOutlineShieldCheck } from "react-icons/hi2";
 import API_BASE_URL from "../services/api";
+import { optimizeCloudinaryImage } from "../utils/cloudinary";
 
 
 
@@ -52,10 +53,6 @@ async () => {
   
   const [loading, setLoading] =
   useState(true);
-
-  const [filteredProducts,
-    setFilteredProducts] =
-    useState([]);
 
   const [searchTerm,
     setSearchTerm] =
@@ -226,99 +223,55 @@ calculateRatingStats(
 
   }, []);
 
-  useEffect(() => {
+  const filteredProducts = useMemo(() => {
 
-    let result =
-      [...products];
+    let result = [...products];
 
-    if (
-      selectedCategory !==
-      "ALL"
-    ) {
+    if (selectedCategory !== "ALL") {
 
-      result =
-        result.filter(
-          product =>
-            product.category &&
-            product.category.name ===
-            selectedCategory
+        result = result.filter(
+            product =>
+                product.category &&
+                product.category.name === selectedCategory
         );
+
     }
 
-    if (
-      searchTerm.trim() !== ""
-    ) {
+    if (searchTerm.trim() !== "") {
 
-      result =
-        result.filter(
-          product =>
+        result = result.filter(product =>
             product.name
-              .toLowerCase()
-              .includes(
-                searchTerm
-                  .toLowerCase()
-              )
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
         );
+
     }
 
-    if (
-  sortOption === "PRICE_ASC"
-) {
+    switch (sortOption) {
 
-  result.sort(
-    (a, b) =>
-      a.price - b.price
-  );
+        case "PRICE_ASC":
+            result.sort((a, b) => a.price - b.price);
+            break;
 
-}
+        case "PRICE_DESC":
+            result.sort((a, b) => b.price - a.price);
+            break;
 
-if (
-  sortOption === "PRICE_DESC"
-) {
+        case "NAME_ASC":
+            result.sort((a, b) => a.name.localeCompare(b.name));
+            break;
 
-  result.sort(
-    (a, b) =>
-      b.price - a.price
-  );
+        case "NAME_DESC":
+            result.sort((a, b) => b.name.localeCompare(a.name));
+            break;
 
-}
+        default:
+            break;
+    }
 
-if (
-  sortOption === "NAME_ASC"
-) {
+    return result;
 
-  result.sort(
-    (a, b) =>
-      a.name.localeCompare(
-        b.name
-      )
-  );
-
-}
-
-if (
-  sortOption === "NAME_DESC"
-) {
-
-  result.sort(
-    (a, b) =>
-      b.name.localeCompare(
-        a.name
-      )
-  );
-
-}
-
-    setFilteredProducts(
-      result
-    );
-
-  }, [
-    searchTerm,
-    selectedCategory,
-    sortOption,
-    products
-  ]);
+}, [products, searchTerm, selectedCategory, sortOption]);
 
   const totalPages = Math.ceil(
 
@@ -665,11 +618,14 @@ calculateRatingStats(
                       >
                         <img
                           src={
-                              product.imageUrl.startsWith("http")
-                                  ? product.imageUrl
-                                  : `${API_BASE_URL}/images/${product.imageUrl}`
+                            optimizeCloudinaryImage(product.imageUrl, 700)
+                              ? product.imageUrl
+                              : `${API_BASE_URL}/images/${product.imageUrl}`
                           }
                           alt={product.name}
+                          loading="eager"
+                          decoding="async"
+                          draggable={false}
                           style={{
                             width: "100%",
                             height: "300px",
@@ -822,9 +778,12 @@ calculateRatingStats(
   >
                   <img
                     className="product-image"
+                    loading="eager"
+                    decoding="async"
+                    draggable={false}
                     src={
                         selectedProduct.imageUrl?.startsWith("http")
-                            ? selectedProduct.imageUrl
+                            ? optimizeCloudinaryImage(selectedProduct.imageUrl, 1200)
                             : `${API_BASE_URL}/images/${selectedProduct.imageUrl}`
                     }
                     alt={selectedProduct.name}

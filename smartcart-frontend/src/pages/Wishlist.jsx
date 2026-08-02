@@ -6,6 +6,7 @@ import Pagination from "../components/Pagination";
 import { toast } from "react-toastify";
 import PageLoader from "../components/PageLoader";
 import API_BASE_URL from "../services/api";
+import { optimizeCloudinaryImage } from "../utils/cloudinary";
 
 function Wishlist() {
 
@@ -235,9 +236,12 @@ const currentWishlistItems =
                 >
 
                   <img
+                    loading="eager"
+                    decoding="async"
+                    draggable={false}
                     src={
                         item.product.imageUrl.startsWith("http")
-                            ? item.product.imageUrl
+                            ? optimizeCloudinaryImage(item.product.imageUrl, 700)
                             : `${API_BASE_URL}/images/${item.product.imageUrl}`
                     }
                     alt={

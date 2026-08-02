@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import { toast } from "react-toastify";
 import { HiOutlinePhotograph } from "react-icons/hi";
 import API_BASE_URL from "../services/api";
+import { optimizeCloudinaryImage } from "../utils/cloudinary";
 
 function EditProduct() {
 
@@ -186,7 +187,11 @@ async (e) => {
   preview && (
 
     <img
-      src={preview}
+      src={
+          preview.startsWith("http")
+              ? optimizeCloudinaryImage(preview, 1000)
+              : preview
+      }
 
       alt={product.name}
 

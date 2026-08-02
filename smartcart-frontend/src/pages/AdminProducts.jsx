@@ -11,6 +11,7 @@ import Pagination from "../components/Pagination";
 import "../styles/AdminProducts.css";
 import PageLoader from "../components/PageLoader";
 import API_BASE_URL from "../services/api";
+import { optimizeCloudinaryImage } from "../utils/cloudinary";
 
 function AdminProducts() {
 
@@ -331,9 +332,12 @@ const currentProducts =
             >
 
               <img
+                loading="eager"
+                decoding="async"
+                draggable={false}
                 src={
                     product.imageUrl.startsWith("http")
-                        ? product.imageUrl
+                        ? optimizeCloudinaryImage(product.imageUrl, 600)
                         : `${API_BASE_URL}/images/${product.imageUrl}`
                 }
 

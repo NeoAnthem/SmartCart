@@ -1821,3 +1821,58 @@ img {
 
     max-width:300px;
 }
+
+/* ===========================================
+   MOBILE & TABLET PERFORMANCE OPTIMIZATION
+   =========================================== */
+
+@media (max-width: 992px) {
+
+    /* Disable expensive glass blur */
+
+    .glass-card,
+    .dashboard-card,
+    .page-loader-card,
+    .pagination-btn,
+    .pagination-number,
+    .product-badge {
+
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+
+        background: rgba(28, 24, 54, 0.92) !important;
+    }
+
+    /* Reduce expensive shadows */
+
+    .glass-card,
+    .dashboard-card {
+
+        box-shadow: 0 8px 20px rgba(0,0,0,.25) !important;
+    }
+
+    .glow-button {
+
+        box-shadow: 0 8px 18px rgba(139,92,246,.25) !important;
+    }
+
+    /* Disable hover animations on touch devices */
+
+    .glass-card:hover,
+    .dashboard-card:hover,
+    .glow-button:hover,
+    .pagination-btn:hover,
+    .pagination-number:hover {
+
+        transform: none !important;
+    }
+
+    /* Faster rendering */
+
+    *{
+
+        transition-duration:.15s !important;
+
+    }
+
+}

@@ -9,6 +9,7 @@ import { processPayment } from "../services/paymentService";
 import Pagination from "../components/Pagination";
 import PageLoader from "../components/PageLoader";
 import API_BASE_URL from "../services/api";
+import { optimizeCloudinaryImage } from "../utils/cloudinary";
 
 
 function Cart() {
@@ -429,9 +430,12 @@ const handleCheckout = async () => {
         >
 
           <img
+            loading="eager"
+            decoding="async"
+            draggable={false}
             src={
                 item.product.imageUrl.startsWith("http")
-                    ? item.product.imageUrl
+                    ? optimizeCloudinaryImage(item.product.imageUrl, 600)
                     : `${API_BASE_URL}/images/${item.product.imageUrl}`
             }
             alt={item.product.name}

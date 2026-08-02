@@ -630,7 +630,9 @@ SmartCart
 │   │   ├── 📄 pages/                        # Customer & Admin Pages
 │   │   ├── 🌐 services/                     # Axios REST Services
 │   │   ├── 🎨 styles/                       # CSS Stylesheets
-│   │   ├── App.jsx
+│   │   └── 🧰 utils/                        # Shared Utility Functions   
+│   │
+│   ├── App.jsx
 │   │   └── main.jsx
 │   │
 │   ├── 📁 public/
