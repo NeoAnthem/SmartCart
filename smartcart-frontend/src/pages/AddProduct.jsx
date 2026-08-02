@@ -380,7 +380,9 @@ const handleSubmit =
                     Category
                 </label>
 
-                <Select
+                            <Select
+                                isSearchable={false}
+    tabSelectsValue={false}
     placeholder="Select Category"
     options={categories.map(category => ({
         value: category.id,

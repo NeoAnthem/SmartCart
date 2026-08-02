@@ -509,7 +509,9 @@ const formatCompactCurrency = (value) => {
 
     <div style={{ width: "220px", flexShrink: 0 }}>
 
-        <Select
+                            <Select
+                                isSearchable={false}
+            tabSelectsValue={false}
             styles={customSelectStyles}
             options={categories.map(category => ({
                 value: category,
@@ -528,7 +530,9 @@ const formatCompactCurrency = (value) => {
 
     <div style={{ width: "250px" }}>
 
-        <Select
+                            <Select
+                                isSearchable={false}
+            tabSelectsValue={false}
             styles={customSelectStyles}
             options={[
                 {

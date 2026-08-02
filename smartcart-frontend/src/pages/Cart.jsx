@@ -432,7 +432,7 @@ const handleCheckout = async () => {
             src={
                 item.product.imageUrl.startsWith("http")
                     ? item.product.imageUrl
-                    : `${API_BASE_URL}/images/${item.product.imageUrl}?t=${Date.now()}`
+                    : `${API_BASE_URL}/images/${item.product.imageUrl}`
             }
             alt={item.product.name}
             onError={(e) => {

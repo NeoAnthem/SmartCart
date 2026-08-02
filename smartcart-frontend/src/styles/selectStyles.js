@@ -92,7 +92,9 @@ const customSelectStyles = {
 
         ...provided,
 
-        color: "white"
+        color: "white",
+        
+        cursor: "pointer"
     }),
 
     placeholder: (provided) => ({
@@ -106,7 +108,9 @@ const customSelectStyles = {
 
         ...provided,
 
-        color: "white"
+        color: "white",
+
+        cursor: "pointer"
     }),
 
     dropdownIndicator: (provided) => ({

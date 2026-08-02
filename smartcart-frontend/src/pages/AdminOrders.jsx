@@ -221,6 +221,8 @@ const currentOrders = filteredOrders.slice(
   <div className="orders-sort">
 
     <Select
+              isSearchable={false}
+              tabSelectsValue={false}
               styles={customSelectStyles}
               menuPortalTarget={document.body}
               menuPosition="fixed"
@@ -272,7 +274,9 @@ const currentOrders = filteredOrders.slice(
           
           <div className="orders-filter">
 
-  <Select
+            <Select
+              isSearchable={false}
+    tabSelectsValue={false}
     styles={customSelectStyles}
     menuPortalTarget={document.body}
     menuPosition="fixed"
@@ -396,7 +400,8 @@ const currentOrders = filteredOrders.slice(
 <div className="admin-order-status-select">
 
   <Select
-
+    isSearchable={false}
+    tabSelectsValue={false}
     styles={customSelectStyles}
     menuPortalTarget={document.body}
     menuPosition="fixed"

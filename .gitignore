@@ -35,6 +35,10 @@ logs/
 # Never commit frontend environment file
 **/.env
 
+# ==========================
+# Uploads
+# ==========================
+uploads/
 
 # ==========================
 # Archives

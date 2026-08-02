@@ -1,28 +1,42 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Products from "./pages/Products";
-import Cart from "./pages/Cart";
-import Wishlist from "./pages/Wishlist";
-import Orders from "./pages/Orders";
-import AdminOrders from "./pages/AdminOrders";
-import AdminDashboard from "./pages/AdminDashboard";
-import SalesReports from "./pages/SalesReports";
-import Profile from "./pages/Profile";
-import AdminUsers from "./pages/AdminUsers";
-import AdminProducts from "./pages/AdminProducts";
-import EditProduct from "./pages/EditProduct";
-import AddProduct from "./pages/AddProduct";
-import AdminCategories from "./pages/AdminCategories";
+
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const Products = lazy(() => import("./pages/Products"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const Orders = lazy(() => import("./pages/Orders"));
+const Profile = lazy(() => import("./pages/Profile"));
+
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const AdminProducts = lazy(() => import("./pages/AdminProducts"));
+const AddProduct = lazy(() => import("./pages/AddProduct"));
+const EditProduct = lazy(() => import("./pages/EditProduct"));
+const AdminCategories = lazy(() => import("./pages/AdminCategories"));
+const AdminUsers = lazy(() => import("./pages/AdminUsers"));
+const AdminOrders = lazy(() => import("./pages/AdminOrders"));
+const SalesReports = lazy(() => import("./pages/SalesReports"));
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PageLoader from "./components/PageLoader";
 
 function App() {
 
   return (
 
     <BrowserRouter>
+      
+      <Suspense
+          fallback={
+              <PageLoader
+                  title="Loading Page..."
+                  message="Preparing SmartCart..."
+              />
+          }
+      >
 
       <Routes>
 
@@ -43,12 +57,20 @@ function App() {
 
         <Route
           path="/admin/products/add"
-          element={<AddProduct />}
+          element={
+            <ProtectedRoute requiredRole="ROLE_ADMIN">
+              <AddProduct />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/admin/categories"
-          element={<AdminCategories />}
+          element={
+            <ProtectedRoute requiredRole="ROLE_ADMIN">
+              <AdminCategories />
+            </ProtectedRoute>
+          }
         />
 
         <Route
@@ -169,7 +191,8 @@ function App() {
           }
         />
 
-      </Routes>
+        </Routes>
+        </Suspense>
 
       <ToastContainer
           position="top-center"

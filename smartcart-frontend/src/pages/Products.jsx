@@ -556,7 +556,9 @@ const currentReviews = reviews.slice(
 />
 
                 <div className="products-filter">
-    <Select
+                  <Select
+                    isSearchable={false}
+        tabSelectsValue={false}
         styles={customSelectStyles}
         options={categories.map(category => ({
             value: category,
@@ -573,7 +575,9 @@ const currentReviews = reviews.slice(
 </div>
 
 <div className="products-sort">
-    <Select
+                  <Select
+                    isSearchable={false}
+        tabSelectsValue={false}
         styles={customSelectStyles}
         options={[
             { value:"DEFAULT", label:"Sort By" },
@@ -663,7 +667,7 @@ calculateRatingStats(
                           src={
                               product.imageUrl.startsWith("http")
                                   ? product.imageUrl
-                                  : `${API_BASE_URL}/images/${product.imageUrl}?t=${Date.now()}`
+                                  : `${API_BASE_URL}/images/${product.imageUrl}`
                           }
                           alt={product.name}
                           style={{
@@ -821,7 +825,7 @@ calculateRatingStats(
                     src={
                         selectedProduct.imageUrl?.startsWith("http")
                             ? selectedProduct.imageUrl
-                            : `${API_BASE_URL}/images/${selectedProduct.imageUrl}?t=${Date.now()}`
+                            : `${API_BASE_URL}/images/${selectedProduct.imageUrl}`
                     }
                     alt={selectedProduct.name}
                     style={{

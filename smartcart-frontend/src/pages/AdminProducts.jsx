@@ -282,7 +282,9 @@ const currentProducts =
 />
 
           <div className="admin-select">
-          <Select
+            <Select
+              isSearchable={false}
+    tabSelectsValue={false}
     placeholder="All Categories"
     options={[
         {

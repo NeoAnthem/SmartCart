@@ -410,7 +410,9 @@ const sortOptions = [
         className="cool-input users-search"
     />
 
-<Select
+                    <Select
+                        isSearchable={false}
+    tabSelectsValue={false}
     options={roleOptions}
     value={
         roleOptions.find(
@@ -426,7 +428,9 @@ const sortOptions = [
     menuPosition="fixed"
 />
 
-<Select
+                    <Select
+                        isSearchable={false}
+    tabSelectsValue={false}
     options={sortOptions}
     value={
         sortOptions.find(

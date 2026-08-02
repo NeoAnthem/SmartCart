@@ -294,7 +294,9 @@ const currentOrders = filteredOrders.slice(
 
           <div className="orders-sort">
             
-    <Select
+            <Select
+              isSearchable={false}
+        tabSelectsValue={false}
         styles={customSelectStyles}
         options={[
             {
@@ -342,7 +344,9 @@ const currentOrders = filteredOrders.slice(
 
           <div className="orders-filter">
             
-    <Select
+            <Select
+              isSearchable={false}
+        tabSelectsValue={false}
         styles={customSelectStyles}
         options={[
             {
