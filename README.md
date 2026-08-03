@@ -644,6 +644,8 @@ SmartCart
 │   └── 📄 README.md
 │
 ├── 📷 docs/                                 # Screenshots & Documentation
+│   └── 📄 SmartCart_Project_Report.pdf
+│   └── 📊 SmartCart_Test_Cases.xlsx
 │   └── 📁 screenshots
 │   └── 🖼️ cart-logo.svg
 │
